@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>dog</title>
+   
+
+  </head>
+
+  <body>
+    <img id="doguinho">
+    <button id = "butao">Mais um doguinho</button>
+
+
+    <script>
+      const btn = document.querySelector('#butao')
+
+      btn.addEventListener('click', () =>{
+        location.reload()
+      })
+    </script>
+
+
+    <script>
+      var httpRequest = new XMLHttpRequest();
+      httpRequest.open("get", "https://dog.ceo/api/breeds/image/random");
+      httpRequest.send();
+
+      httpRequest.onreadystatechange = funçãodocachorro;
+
+      function funçãodocachorro()
+      {
+          if (httpRequest.readyState == 4 && httpRequest.status == 200)
+          {
+              var dogs = httpRequest.responseText;
+              console.log(typeof(dogs))
+              var dogsObj = JSON.parse(dogs);
+              console.log(dogsObj)
+              document.getElementById("doguinho").src = dogsObj.message
+          }
+      }
+    </script>
+    
+  </body>
+
+
+</html>
